@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LZTag'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = ' ios swift 标签选择器 tag Label selector,支持左对齐，右对齐，中间对齐'
 
 # This description is used to generate tags and improve search results.
