@@ -77,6 +77,4 @@ extension LZTagView: LZTagLayoutDelegate {
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForFooterInSection section: Int) -> CGSize {
         CGSize(width: 50, height: 10)
     }
-    
-    
 }
