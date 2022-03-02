@@ -1,0 +1,15 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'LZTag_Example' do
+  pod 'LZTag', :path => '../'
+  #pod 'LZTag', :git => 'https://gitee.com/Sunny0123/lztag.git'
+  pod 'SnapKit'
+
+  target 'LZTag_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
