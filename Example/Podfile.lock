@@ -3,7 +3,7 @@ PODS:
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
-  - LZTag (from `../`)
+  - LZTag (from `https://github.com/lizhi0123/LZTag.git`)
   - SnapKit
 
 SPEC REPOS:
@@ -12,12 +12,17 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   LZTag:
-    :path: "../"
+    :git: https://github.com/lizhi0123/LZTag.git
+
+CHECKOUT OPTIONS:
+  LZTag:
+    :commit: 2533780d510c41501d6993b45eb3d814e807da13
+    :git: https://github.com/lizhi0123/LZTag.git
 
 SPEC CHECKSUMS:
   LZTag: 9a2e4d97a21cfe43f66cb922ed81c4be4de05403
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 9754056099e35c2e1b77cb8b126d72030e517036
+PODFILE CHECKSUM: d98970c9df61505478070aeb940c0578ab605435
 
 COCOAPODS: 1.11.2
