@@ -68,14 +68,14 @@ extension LZTagView: LZTagLayoutDelegate {
     }
     
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 50, height: 30)
+        return CGSize(width: 50, height: 10)
     }
     
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String {
         return self.titles[indexPath.row]
     }
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForFooterInSection section: Int) -> CGSize {
-        CGSize(width: 50, height: 30)
+        CGSize(width: 50, height: 10)
     }
     
     

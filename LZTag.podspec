@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'LZTag'
   s.version          = '0.1.1'
-  s.summary          = ' ios swift 标签选择器 tag Label selector'
+  s.summary          = ' ios swift 标签选择器 tag Label selector,支持左对齐，右对齐，中间对齐'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,11 +18,11 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  ios swift 标签选择器 tag Label selector
+  ios swift 标签选择器 tag Label selector，支持左对齐，右对齐，中间对齐
                        DESC
 
   s.homepage         = 'https://github.com/lizhi0123/LZTag'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+   s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'lizhi0123' => '1056522750@qq.com' }
   s.source           = { :git => 'https://github.com/lizhi0123/LZTag.git', :tag => s.version.to_s }
