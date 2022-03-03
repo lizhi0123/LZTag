@@ -22,9 +22,8 @@ class RoundViewController: UIViewController {
                   "标签1","标签选择器","标签1","标签选择器"]
 
    private(set) lazy var collectionView: UICollectionView = {
-       let layout = self.layout//
+       let layout = self.layout
        let temp =  UICollectionView(frame: .zero, collectionViewLayout: layout)
-       
        return temp
    }()
     

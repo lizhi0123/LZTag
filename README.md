@@ -1,147 +1,109 @@
 #### iOS swift 标签选择器 居中对齐，左对齐,右对齐
+基本效果图
 ![image.png](https://upload-images.jianshu.io/upload_images/2384741-706fa275ee092897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+圆角效果图
+![WechatIMG205.png](https://upload-images.jianshu.io/upload_images/2384741-efa55074a4439f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 
 实现方法
 > UICollectionView 重新自定义 UICollectionViewLayout
 
-demo 地址 https://gitee.com/Sunny0123/lztag
+demo 地址 https://gitee.com/Sunny0123/lztag(不更新，最新到github)
+最新代码地址：https://github.com/lizhi0123/LZTag
+
 
  - #### 引用
 
 ```
-pod 'LZTag', :git => 'https://gitee.com/Sunny0123/lztag.git'
+pod 'LZTag', :git => 'https://github.com/lizhi0123/LZTag.git'
+```
+- #### 使用方法
+1.设置collection的layout 为 LZTagLayout
+```
+ lazy var layout: LZTagLayout = {
+       let temp = LZTagLayout()
+       temp.delegate = self
+       return temp
+   }()
+ private(set) lazy var collectionView: UICollectionView = {
+       let layout = self.layout
+       let temp =  UICollectionView(frame: .zero, collectionViewLayout: layout)
+       return temp
+   }()
 ```
 
-- #### 主要实现代码
-
-
+2.正常使用collectionview
 ```
-//
-//  LZTagLayout.swift
-//  Tag
-//
-//  Created by lizhi on 2022/3/1.
-//
-
-import UIKit
-
-protocol LZTagLayoutDelegate: NSObject {
-    func collectionView(_ collectionView: UICollectionView, TextForItemAt indexPath: IndexPath) -> String
-}
-
-// NSTextAlignment    textAlignment
-enum TagContentAlignment {
-    case left
-    // right 未实现
-//    case right
-    case center
-}
-
-class LZTagLayout: UICollectionViewLayout {
-    // 标签的内边距
-    var tagInnerMargin: CGFloat = 25
-    // 元素间距
-    var itemSpacing: CGFloat = 10
-    // 行间距
-    var lineSpacing: CGFloat = 10
-    // 标签的高度
-    var itemHeight: CGFloat = 25
-    // 标签的字体
-    var itemFont = UIFont.systemFont(ofSize: 12)
+collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
+        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "UICollectionReusableView")
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .yellow
     
-    weak var delegate: LZTagLayoutDelegate?
-    var titles = ["我是标题11", "对对我是标签选择器2", "对对我是标签选择器13", "我要居中显示24", "我5", "我是6", "我是标题11", "对对我是标签选择器2", "对对我是标签选择器13", "我要居中显示24", "我5", "我是6"]
-    /// tag 内容的对齐方式
-    var contentAlignment = TagContentAlignment.center
+        self.view.addSubview(collectionView)
+```
+3.实现UICollectionViewDataSource
+```
 
-    // 可见区域
-    private var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
-    // 内容高度
-    private var contentHeight: CGFloat = 0
-    override func prepare() {
-        guard let collectionView = self.collectionView else { return }
-        let sections = collectionView.numberOfSections
-        contentHeight = 0
-        visibleLayoutAttributes.removeAll(keepingCapacity: true)
-      
-        for section in 0 ..< sections {
-            // 处理tag
-            let rows = collectionView.numberOfItems(inSection: section)
-            var frame = CGRect(x: 0, y: contentHeight + lineSpacing, width: 0, height: 0)
-            var contentWidthInRowCenter = CGFloat(0)
-            var indexPathsInRowCenter = [IndexPath]()
-            for item in 0 ..< rows {
-                let indexPath = IndexPath(item: item, section: section)
-                let text = titles[item] // delegate.collectionView(collectionView, TextForItemAt: indexPath)
-                let tagWidth = textWidth(text) + tagInnerMargin
-                switch contentAlignment {
-                case .left:
-                    // 其他
-                    if frame.maxX + tagWidth + itemSpacing * 2 > self.collectionView!.frame.width {
-                        // 需要换行
-                        frame = CGRect(x: itemSpacing, y: frame.maxY + lineSpacing, width: tagWidth, height: itemHeight)
-                    } else {
-                        frame = CGRect(x: frame.maxX + itemSpacing, y: frame.origin.y, width: tagWidth, height: itemHeight)
-                    }
-                case .center:
-                    // 其他
-                    if frame.maxX + tagWidth + itemSpacing * 2 > self.collectionView!.frame.width {
-                        resetCenterAlignmentRowFrame(contentWidthInRow: contentWidthInRowCenter, indexPathsInRow: indexPathsInRowCenter)
-                        indexPathsInRowCenter.removeAll()
-                        contentWidthInRowCenter = 0
-                        // 需要换行
-                        frame = CGRect(x: itemSpacing, y: frame.maxY + lineSpacing, width: tagWidth, height: itemHeight)
-                        contentWidthInRowCenter = itemSpacing + tagWidth
-                    } else {
-                        frame = CGRect(x: frame.maxX + itemSpacing, y: frame.origin.y, width: tagWidth, height: itemHeight)
-                        contentWidthInRowCenter = contentWidthInRowCenter + itemSpacing + tagWidth
-                    }
-                    indexPathsInRowCenter.append(indexPath)
-                }
-                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                attributes.frame = frame
-                visibleLayoutAttributes.removeAll { $0.indexPath == indexPath }
-                visibleLayoutAttributes.append(attributes)
-            }
-            if indexPathsInRowCenter.isEmpty == false {
-                resetCenterAlignmentRowFrame(contentWidthInRow: contentWidthInRowCenter, indexPathsInRow: indexPathsInRowCenter)
-                contentWidthInRowCenter = 0
-                indexPathsInRowCenter.removeAll()
-            }
-            contentHeight = frame.maxY
+extension RoundViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return self.titles.count
+   }
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoundCollectionCell", for: indexPath) as! RoundCollectionCell
+       let title = self.titles[indexPath.row]
+       cell.fill(title: title)
+       return cell
+   }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
+            headView.backgroundColor = .systemRed
+            return headView
+            
+        default:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "UICollectionReusableView", for: indexPath)
+            footerView.backgroundColor = .systemOrange
+            return footerView
         }
-        
-        func resetCenterAlignmentRowFrame(contentWidthInRow: CGFloat, indexPathsInRow: [IndexPath]) {
-            let offset = ((self.collectionView?.frame.size.width ?? 0) - contentWidthInRow - itemSpacing) / 2
-            for indexPath in indexPathsInRow {
-                let attribute = visibleLayoutAttributes.first { $0.indexPath == indexPath }
-                if let centerOld = attribute?.center {
-                    attribute?.center = CGPoint(x: centerOld.x + offset, y: centerOld.y)
-                }
-            }
+       
+    }
+}
+```
+4.实现LZTagLayout 的 LZTagLayoutDelegate
+  ```
+extension RoundViewController: LZTagLayoutDelegate {
+   /// 标签内边距
+   func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, tagInnerMarginForItemAt indexPath: IndexPath) -> CGFloat {
+       return CGFloat(25)
+   }
+   
+    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            return CGSize(width: 250, height: 30)
+        case UICollectionElementKindSectionFooter:
+            return CGSize(width: 250, height: 40)
+        default:
+            return CGSize(width: 250, height: 40)
         }
-    }
-    
-    override var collectionViewContentSize: CGSize {
-        return CGSize(width: collectionView?.frame.size.width ?? 0, height: contentHeight)
-    }
+       
+   }
+   
+   func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String {
+       return self.titles[indexPath.row]
+   }
 
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return visibleLayoutAttributes
-    }
-
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let layoutAttribute = visibleLayoutAttributes.first { $0.indexPath == indexPath }
-        return layoutAttribute
-    }
-    
-    // 根据文字 确定label的宽度
-    private func textWidth(_ text: String) -> CGFloat {
-        let rect = (text as NSString).boundingRect(with: .zero, options: .usesLineFragmentOrigin, attributes: [.font: itemFont], context: nil)
-        return rect.width
-    }
 }
 
 ```
+
+
+参考 https://www.jianshu.com/p/47f320732e87
