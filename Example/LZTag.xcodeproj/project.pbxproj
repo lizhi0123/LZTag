@@ -96,6 +96,13 @@
 			name = Expand;
 			sourceTree = "<group>";
 		};
+		0422D77A27D0870900640AF2 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Scroll;
+			sourceTree = "<group>";
+		};
 		04DDCBEF27CF730C00B33547 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +146,7 @@
 		607FACD21AFB9204008FA782 /* Example for LZTag */ = {
 			isa = PBXGroup;
 			children = (
+				0422D77A27D0870900640AF2 /* Scroll */,
 				0422D77327D06B6900640AF2 /* Expand */,
 				04DDCBF527CF79C500B33547 /* CollectionHeadView.swift */,
 				0422D77827D06FDC00640AF2 /* CollectionFootView.swift */,

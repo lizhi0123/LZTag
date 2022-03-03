@@ -1,4 +1,8 @@
-#### iOS swift 标签选择器 居中对齐，左对齐,右对齐
+#### iOS swift 标签选择器 支持居中对齐，左对齐,右对齐
+
+文章掘金地址：https://juejin.cn/post/7070728070151274532
+文章简书地址：https://www.jianshu.com/p/41600e45a10a
+
 基本效果图
 ![image.png](https://upload-images.jianshu.io/upload_images/2384741-706fa275ee092897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 圆角效果图
