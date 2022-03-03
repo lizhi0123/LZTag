@@ -33,7 +33,7 @@ class RoundViewController: UIViewController {
         
         collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
         collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "UICollectionReusableView")
+        collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
     
@@ -68,11 +68,13 @@ extension RoundViewController: UICollectionViewDataSource {
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
             headView.backgroundColor = .systemRed
             return headView
+        case UICollectionElementKindSectionFooter:
             
-        default:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "UICollectionReusableView", for: indexPath)
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "CollectionFootView", for: indexPath) as! CollectionFootView
             footerView.backgroundColor = .systemOrange
             return footerView
+        default:
+            return UICollectionReusableView()
         }
        
     }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0422D77527D06BA700640AF2 /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77427D06BA700640AF2 /* ExpandViewController.swift */; };
+		0422D77727D06C2200640AF2 /* ExpandCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */; };
+		0422D77927D06FDC00640AF2 /* CollectionFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77827D06FDC00640AF2 /* CollectionFootView.swift */; };
 		04DDCBED27CF493000B33547 /* LZTagCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBEB27CF492F00B33547 /* LZTagCollectionCell.swift */; };
 		04DDCBEE27CF493000B33547 /* LZTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBEC27CF493000B33547 /* LZTagView.swift */; };
 		04DDCBF127CF732500B33547 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBF027CF732500B33547 /* BasicViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0422D77427D06BA700640AF2 /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
+		0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollectionCell.swift; sourceTree = "<group>"; };
+		0422D77827D06FDC00640AF2 /* CollectionFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionFootView.swift; sourceTree = "<group>"; };
 		04DDCBEB27CF492F00B33547 /* LZTagCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZTagCollectionCell.swift; sourceTree = "<group>"; };
 		04DDCBEC27CF493000B33547 /* LZTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZTagView.swift; sourceTree = "<group>"; };
 		04DDCBF027CF732500B33547 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0422D77327D06B6900640AF2 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				0422D77427D06BA700640AF2 /* ExpandViewController.swift */,
+				0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */,
+			);
+			name = Expand;
+			sourceTree = "<group>";
+		};
 		04DDCBEF27CF730C00B33547 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +139,9 @@
 		607FACD21AFB9204008FA782 /* Example for LZTag */ = {
 			isa = PBXGroup;
 			children = (
+				0422D77327D06B6900640AF2 /* Expand */,
 				04DDCBF527CF79C500B33547 /* CollectionHeadView.swift */,
+				0422D77827D06FDC00640AF2 /* CollectionFootView.swift */,
 				04DDCBF227CF748F00B33547 /* Round */,
 				04DDCBEF27CF730C00B33547 /* Basic */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -369,10 +386,13 @@
 			files = (
 				04DDCBF827CF7B2000B33547 /* RoundCollectionCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				0422D77927D06FDC00640AF2 /* CollectionFootView.swift in Sources */,
 				04DDCBF127CF732500B33547 /* BasicViewController.swift in Sources */,
 				04DDCBF627CF79C500B33547 /* CollectionHeadView.swift in Sources */,
 				04DDCBED27CF493000B33547 /* LZTagCollectionCell.swift in Sources */,
+				0422D77527D06BA700640AF2 /* ExpandViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				0422D77727D06C2200640AF2 /* ExpandCollectionCell.swift in Sources */,
 				04DDCBEE27CF493000B33547 /* LZTagView.swift in Sources */,
 				04DDCBF427CF74A300B33547 /* RoundViewController.swift in Sources */,
 			);

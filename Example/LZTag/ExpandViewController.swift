@@ -1,56 +1,53 @@
-#### iOS swift 标签选择器 居中对齐，左对齐,右对齐
-基本效果图
-![image.png](https://upload-images.jianshu.io/upload_images/2384741-706fa275ee092897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-圆角效果图
-![WechatIMG205.png](https://upload-images.jianshu.io/upload_images/2384741-efa55074a4439f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-自定义cell
-![image.png](https://upload-images.jianshu.io/upload_images/2384741-dd06f21cfa1d013f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+//
+//  ExpandViewController.swift
+//  LZTag_Example
+//
+//  Created by lizhi on 2022/3/3.
+//  Copyright © 2022 CocoaPods. All rights reserved.
+//
 
+import LZTag
 
+class ExpandViewController: UIViewController {
 
-
-
-实现方法
-> UICollectionView 重新自定义 UICollectionViewLayout
-
-demo 地址 https://gitee.com/Sunny0123/lztag(不更新，最新到github)
-最新代码地址：https://github.com/lizhi0123/LZTag
-
-
- - #### 引用
-
-```
-pod 'LZTag', :git => 'https://github.com/lizhi0123/LZTag.git'
-```
-- #### 使用方法
-1.设置collection的layout 为 LZTagLayout
-```
- lazy var layout: LZTagLayout = {
+    lazy var layout: LZTagLayout = {
        let temp = LZTagLayout()
        temp.delegate = self
        return temp
    }()
- private(set) lazy var collectionView: UICollectionView = {
+   
+    var titles = ["round现在左对齐","可设右对齐","可设居中对齐","cell 内可以自定义1","内边距可自定义2",
+                  "cell 内可以自定义3","内边距可自定义4",
+                  "标签1","标签选择器","标签1","标签选择器"]
+
+   private(set) lazy var collectionView: UICollectionView = {
        let layout = self.layout
        let temp =  UICollectionView(frame: .zero, collectionViewLayout: layout)
        return temp
    }()
-```
-
-2.正常使用collectionview
-```
-collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
+        collectionView.register(ExpandCollectionCell.self, forCellWithReuseIdentifier: "ExpandCollectionCell")
         collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "UICollectionReusableView")
+        collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
     
         self.view.addSubview(collectionView)
-```
-3.实现UICollectionViewDataSource，cell可根据需求自定义
-```
+        
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        }
 
-extension RoundViewController: UICollectionViewDataSource {
+    }
+
+}
+
+
+extension ExpandViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -58,7 +55,7 @@ extension RoundViewController: UICollectionViewDataSource {
        return self.titles.count
    }
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoundCollectionCell", for: indexPath) as! RoundCollectionCell
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpandCollectionCell", for: indexPath) as! ExpandCollectionCell
        let title = self.titles[indexPath.row]
        cell.fill(title: title)
        return cell
@@ -71,21 +68,25 @@ extension RoundViewController: UICollectionViewDataSource {
             headView.backgroundColor = .systemRed
             return headView
             
-        default:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "UICollectionReusableView", for: indexPath)
+        case UICollectionElementKindSectionFooter:
+            
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "CollectionFootView", for: indexPath) as! CollectionFootView
             footerView.backgroundColor = .systemOrange
             return footerView
+        default:
+            return UICollectionReusableView()
         }
        
     }
 }
-```
-4.实现LZTagLayout 的 LZTagLayoutDelegate
-  ```
-extension RoundViewController: LZTagLayoutDelegate {
+
+
+extension ExpandViewController: LZTagLayoutDelegate {
    /// 标签内边距
    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, tagInnerMarginForItemAt indexPath: IndexPath) -> CGFloat {
-       return CGFloat(25)
+       let zanwidth = 30//图片赞的宽度
+       let spacing = 10//间距
+       return CGFloat(zanwidth + spacing)
    }
    
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize {
@@ -106,7 +107,4 @@ extension RoundViewController: LZTagLayoutDelegate {
 
 }
 
-```
 
-
-参考 https://www.jianshu.com/p/47f320732e87

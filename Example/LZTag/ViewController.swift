@@ -38,6 +38,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
             cell.textLabel?.text = "基本使用"
         case 1:
             cell.textLabel?.text = "圆角使用"
+        case 2:
+            cell.textLabel?.text = "拓展使用"
         default:
             cell.textLabel?.text = "test"
         }
@@ -53,6 +55,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
             controller = BasicViewController()
         case 1:
             controller = RoundViewController()
+        case 2:
+            controller = ExpandViewController()
         default:
             break
         }

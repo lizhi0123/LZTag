@@ -22,7 +22,9 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/lizhi0123/LZTag'
-   s.screenshots     = 'https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots1.png', 'https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots2.png',"https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots3.png"
+   s.screenshots     = 'https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots1.png', 'https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots2.png',
+   "https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots3.png",
+   "https://raw.githubusercontent.com/lizhi0123/LZTag/main/screenshots4.png"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'lizhi0123' => '1056522750@qq.com' }
   s.source           = { :git => 'https://github.com/lizhi0123/LZTag.git', :tag => s.version.to_s }
