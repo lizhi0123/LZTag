@@ -122,7 +122,7 @@ open class LZTagLayout: UICollectionViewLayout {
                 indexPathsInRow.removeAll()
             }
             
-            contentHeight = frame.maxY
+            contentHeight = frame.maxY + lineSpacing 
 
             //footer
             let sectionFooterSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionElementKindSectionFooter, at: section)

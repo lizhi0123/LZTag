@@ -53,7 +53,7 @@
 		607FACE51AFB9204008FA782 /* LZTag_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LZTag_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		74025C23DD5818F907A2B1D4 /* LZTag.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LZTag.podspec; path = ../LZTag.podspec; sourceTree = "<group>"; };
+		74025C23DD5818F907A2B1D4 /* LZTag.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LZTag.podspec; path = ../LZTag.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93CD20D0AD48E69C42FADFF4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B5D5EDDB742712C16092DD49 /* Pods-LZTag_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZTag_Example.debug.xcconfig"; path = "Target Support Files/Pods-LZTag_Example/Pods-LZTag_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B7F5D91B175432B1FEE45F57 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
