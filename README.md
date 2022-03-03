@@ -20,7 +20,7 @@ demo 地址 https://gitee.com/Sunny0123/lztag(不更新，最新到github)
  - #### 引用
 
 ```
-pod 'LZTag', :git => 'https://github.com/lizhi0123/LZTag.git'
+pod 'LZTag'
 ```
 - #### 使用方法
 1.设置collection的layout 为 LZTagLayout
