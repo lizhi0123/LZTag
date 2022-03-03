@@ -20,7 +20,7 @@ class RoundCollectionCell: UICollectionViewCell {
         temp.layer.masksToBounds = true
         temp.layer.cornerRadius = 12
         temp.clipsToBounds  = true
-        temp.backgroundColor = .lightGray
+        temp.backgroundColor = .lightText
         temp.layer.borderColor = UIColor.darkGray.cgColor
         temp.layer.borderWidth = 2
         

@@ -34,6 +34,7 @@ class RoundViewController: UIViewController {
         
         collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
         collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
+        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "CollectionHeadView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
     
@@ -60,8 +61,18 @@ extension RoundViewController: UICollectionViewDataSource {
    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
-        return headView
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
+            headView.backgroundColor = .systemRed
+            return headView
+            
+        default:
+            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "CollectionHeadView", for: indexPath)
+            headView.backgroundColor = .systemOrange
+            return headView
+        }
+       
     }
 }
 
@@ -72,16 +83,14 @@ extension RoundViewController: LZTagLayoutDelegate {
        return CGFloat(25)
    }
    
-   func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForHeaderInSection section: Int) -> CGSize {
-       return CGSize(width: 50, height: 30)
+    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize {
+       return CGSize(width: 50, height: 100)
    }
    
    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String {
        return self.titles[indexPath.row]
    }
-   func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForFooterInSection section: Int) -> CGSize {
-       CGSize(width: 50, height: 30)
-   }
+
 }
 
 

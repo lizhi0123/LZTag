@@ -10,10 +10,8 @@ import UIKit
 public protocol LZTagLayoutDelegate: NSObject {
     /// 文字内容for cell
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String
-    /// section head size
-    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForHeaderInSection section: Int) -> CGSize
-
-    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForFooterInSection section: Int) -> CGSize
+    /// section head footer size
+    func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize
 
     ///  标签的内边距
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, tagInnerMarginForItemAt indexPath: IndexPath) -> CGFloat
@@ -41,21 +39,31 @@ open class LZTagLayout: UICollectionViewLayout {
     open weak var delegate: LZTagLayoutDelegate?
 //    var titles = [String]()
     /// tag 内容的对齐方式
-    open var contentAlignment = TagContentAlignment.center
+    open var contentAlignment = TagContentAlignment.left
 
     // 可见区域
     private(set) var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
+    private var headerFooterLayoutAttributes = [UICollectionViewLayoutAttributes]()
     // 内容高度
     private(set) var contentHeight: CGFloat = 0
     override open func prepare() {
         guard let collectionView = self.collectionView, let delegate = self.delegate else { return }
         let sections = collectionView.numberOfSections
         contentHeight = 0
-        visibleLayoutAttributes.removeAll(keepingCapacity: true)
+        visibleLayoutAttributes.removeAll()
+        headerFooterLayoutAttributes.removeAll()
 
         for section in 0 ..< sections {
-            let headSize = delegate.tagLayout(self, collectionView: collectionView, sizeForHeaderInSection: section)
-            contentHeight += headSize.height
+            let sectionIndexPath = IndexPath(item: 0, section: section)
+            let headerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: sectionIndexPath)
+            //head
+            let sectionHeadSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionElementKindSectionHeader, at: section)
+            let sectionOriginY = contentHeight
+            let sectionHeaderFrame = CGRect(x: 0 , y: sectionOriginY , width: sectionHeadSize.width , height: sectionHeadSize.height)
+            headerAttribute.frame = sectionHeaderFrame
+            headerFooterLayoutAttributes.append(headerAttribute)
+            
+            contentHeight += sectionHeadSize.height
             // 处理tag
             let rows = collectionView.numberOfItems(inSection: section)
             var frame = CGRect(x: 0, y: contentHeight + lineSpacing, width: 0, height: 0)
@@ -113,8 +121,19 @@ open class LZTagLayout: UICollectionViewLayout {
                 contentWidthInRow = 0
                 indexPathsInRow.removeAll()
             }
-            let footerSize = delegate.tagLayout(self, collectionView: collectionView, sizeForFooterInSection: section)
-            contentHeight = frame.maxY + footerSize.height
+            
+            contentHeight = frame.maxY
+
+            //footer
+            let sectionFooterSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionElementKindSectionFooter, at: section)
+            let sectionFooterOriginY = contentHeight
+            let sectionFooterFrame = CGRect(x: 0 , y: sectionFooterOriginY , width: sectionFooterSize.width , height: sectionFooterSize.height)
+            let footerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, with: sectionIndexPath)
+            footerAttribute.frame = sectionFooterFrame
+            headerFooterLayoutAttributes.append(footerAttribute)
+            
+            
+            contentHeight = contentHeight + sectionFooterSize.height
         }
 
         func resetCenterAlignmentRowFrame(contentWidthInRow: CGFloat, indexPathsInRow: [IndexPath]) {
@@ -143,11 +162,17 @@ open class LZTagLayout: UICollectionViewLayout {
     }
 
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return visibleLayoutAttributes
+        return visibleLayoutAttributes + headerFooterLayoutAttributes
+//        return visibleLayoutAttributes
     }
 
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let layoutAttribute = visibleLayoutAttributes.first { $0.indexPath == indexPath }
+        return layoutAttribute
+    }
+    
+    open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let layoutAttribute = headerFooterLayoutAttributes.first {( $0.indexPath == indexPath) && ($0.representedElementKind == elementKind) }
         return layoutAttribute
     }
 
