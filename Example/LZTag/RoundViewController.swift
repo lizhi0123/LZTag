@@ -32,8 +32,8 @@ class RoundViewController: UIViewController {
         self.view.backgroundColor = .white
         
         collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
-        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
-        collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
+        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
+        collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
     
@@ -64,13 +64,13 @@ extension RoundViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case UICollectionElementKindSectionHeader:
-            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
+        case UICollectionView.elementKindSectionHeader:
+            let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
             headView.backgroundColor = .systemRed
             return headView
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "CollectionFootView", for: indexPath) as! CollectionFootView
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "CollectionFootView", for: indexPath) as! CollectionFootView
             footerView.backgroundColor = .systemOrange
             return footerView
         default:
@@ -89,9 +89,9 @@ extension RoundViewController: LZTagLayoutDelegate {
    
     func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize {
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             return CGSize(width: 250, height: 30)
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             return CGSize(width: 250, height: 40)
         default:
             return CGSize(width: 250, height: 40)
