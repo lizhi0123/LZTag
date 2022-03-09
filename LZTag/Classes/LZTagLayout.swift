@@ -55,9 +55,9 @@ open class LZTagLayout: UICollectionViewLayout {
 
         for section in 0 ..< sections {
             let sectionIndexPath = IndexPath(item: 0, section: section)
-            let headerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: sectionIndexPath)
+            let headerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
             //head
-            let sectionHeadSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionElementKindSectionHeader, at: section)
+            let sectionHeadSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: section)
             let sectionOriginY = contentHeight
             let sectionHeaderFrame = CGRect(x: 0 , y: sectionOriginY , width: sectionHeadSize.width , height: sectionHeadSize.height)
             headerAttribute.frame = sectionHeaderFrame
@@ -125,10 +125,10 @@ open class LZTagLayout: UICollectionViewLayout {
             contentHeight = frame.maxY + lineSpacing
 
             //footer
-            let sectionFooterSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionElementKindSectionFooter, at: section)
+            let sectionFooterSize = delegate.tagLayout(self, collectionView: collectionView, sizeForSupplementaryElementOfKind: UICollectionView.elementKindSectionFooter, at: section)
             let sectionFooterOriginY = contentHeight
             let sectionFooterFrame = CGRect(x: 0 , y: sectionFooterOriginY , width: sectionFooterSize.width , height: sectionFooterSize.height)
-            let footerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, with: sectionIndexPath)
+            let footerAttribute = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: sectionIndexPath)
             footerAttribute.frame = sectionFooterFrame
             headerFooterLayoutAttributes.append(footerAttribute)
             

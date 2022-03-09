@@ -1,12 +1,12 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '12.0'
 
 target 'LZTag_Example' do
-#  pod 'LZTag', :path => '../'
+  pod 'LZTag', :path => '../'
   #pod 'LZTag', :git => 'https://gitee.com/Sunny0123/lztag.git'
   #pod 'LZTag', :git => 'https://github.com/lizhi0123/LZTag.git'
-  pod 'LZTag'
+#  pod 'LZTag'
   
   pod 'SnapKit'
 

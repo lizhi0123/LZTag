@@ -1,5 +1,5 @@
 PODS:
-  - LZTag (0.1.2)
+  - LZTag (1.0.1)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LZTag: 7e55a0ac6100e4fa5fbc68d17d71f8d53e3f7eaf
+  LZTag: 5e0f36d252c7958d40107f159d2356eebdab3cd1
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 7e5f68ad3779541cc5ebfbbef90de1891669fbdd
+PODFILE CHECKSUM: f00845feae0f58aeecba9e485ebbc8ce6c8cbc6a
 
 COCOAPODS: 1.11.2
