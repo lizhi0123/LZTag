@@ -21,6 +21,10 @@ demo 地址 https://gitee.com/Sunny0123/lztag(不更新，最新到github)
 最新代码地址：https://github.com/lizhi0123/LZTag
 
 
+v1.0.1 支持 swift5
+v1.0.0 支持 swift 4.2
+
+
  - #### 引用
 
 ```
