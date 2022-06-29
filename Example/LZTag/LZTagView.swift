@@ -11,9 +11,15 @@ import LZTag
  class LZTagView: UIView {
     
      lazy var layout: LZTagLayout = {
-        let temp = LZTagLayout()
-        temp.delegate = self
-        return temp
+        let lay = LZTagLayout()
+         lay.itemSpacing = 10
+         lay.lineSpacing = 10
+         lay.itemHeight = 25
+         lay.itemFont = UIFont.systemFont(ofSize: 12)
+         lay.itemSpacing = 10
+         lay.contentAlignment = .left
+         lay.delegate = self
+        return lay
     }()
     
     var tagContentAlignment = TagContentAlignment.left {

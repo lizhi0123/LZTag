@@ -34,16 +34,16 @@ pod repo update
 ```
 pod 'LZTag'
 ```
-- #### 方法属性说明
+- #### LZTagLayout 方法属性说明
 |  方法/属性   | 说明  |
 |  ----  | ----  |
-| func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String  | delegate 方法  文字内容for cell ；textForItemAt indexPath + itemFont + tagInnerMarginForItemAt indexPath 共同控制cell的宽度|
+| func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, textForItemAt indexPath: IndexPath) -> String  | delegate 方法  文字内容for cell ；textForItemAt  + itemFont + tagInnerMarginForItemAt 共同控制cell的宽度|
 | func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, sizeForSupplementaryElementOfKind kind: String, at section: Int) -> CGSize  | section head footer size |
-| func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, tagInnerMarginForItemAt indexPath: IndexPath) -> CGFloat  |  标签的内边距 |
+| func tagLayout(_ layout: LZTagLayout, collectionView: UICollectionView, tagInnerMarginForItemAt indexPath: IndexPath) -> CGFloat  |  标签的内边距; textForItemAt  + itemFont + tagInnerMarginForItemAt 共同控制cell的宽度 |
 | itemSpacing  | 元素间距 |
 | lineSpacing  | 行间距 |
 | itemHeight  | 标签的高度 |
-| itemFont  | 标签的字体 |
+| itemFont  | 标签的字体 ; textForItemAt  + itemFont + tagInnerMarginForItemAt 共同控制cell的宽度|
 | delegate | 代理|
 | ✅contentAlignment  | 对其方式：靠左，靠右，居中 |
 
@@ -52,10 +52,17 @@ pod 'LZTag'
 1.设置collection的layout 为 LZTagLayout
 ```
  lazy var layout: LZTagLayout = {
-       let temp = LZTagLayout()
-       temp.delegate = self
-       return temp
-   }()
+        let lay = LZTagLayout()
+         lay.itemSpacing = 10
+         lay.lineSpacing = 10
+         lay.itemHeight = 25
+         lay.itemFont = UIFont.systemFont(ofSize: 12)
+         lay.itemSpacing = 10
+         lay.contentAlignment = .left
+         lay.delegate = self
+        return lay
+    }()
+
  private(set) lazy var collectionView: UICollectionView = {
        let layout = self.layout
        let temp =  UICollectionView(frame: .zero, collectionViewLayout: layout)
