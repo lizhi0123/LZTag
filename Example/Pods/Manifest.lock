@@ -1,0 +1,23 @@
+PODS:
+  - LZTag (1.0.3)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - LZTag (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  LZTag:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LZTag: 4260bdf841bcc99d20719793e146fc2c7d16f834
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: f00845feae0f58aeecba9e485ebbc8ce6c8cbc6a
+
+COCOAPODS: 1.11.2

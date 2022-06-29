@@ -9,8 +9,8 @@
 import UIKit
 
 class ExpandCollectionCell: UICollectionViewCell {
-    private lazy var roundView: UIImageView = {
-        let temp = UIImageView()
+    private lazy var roundView: UIView = {
+        let temp = UIView()
         temp.layer.masksToBounds = true
         temp.layer.cornerRadius = 12
         temp.clipsToBounds = true

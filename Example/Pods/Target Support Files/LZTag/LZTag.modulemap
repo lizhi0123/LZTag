@@ -1,0 +1,6 @@
+framework module LZTag {
+  umbrella header "LZTag-umbrella.h"
+
+  export *
+  module * { export * }
+}

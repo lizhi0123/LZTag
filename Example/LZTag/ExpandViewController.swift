@@ -12,6 +12,7 @@ class ExpandViewController: UIViewController {
 
     lazy var layout: LZTagLayout = {
        let temp = LZTagLayout()
+        temp.itemHeight = 40
        temp.delegate = self
        return temp
    }()
