@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CollectionHeadView: UICollectionReusableView {
-    var label = UILabel()
+open class LZTagCollectionHeadView: UICollectionReusableView {
+   open var label = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
         label.text = "head"
@@ -19,7 +19,7 @@ class CollectionHeadView: UICollectionReusableView {
         }
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

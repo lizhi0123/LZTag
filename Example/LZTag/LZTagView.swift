@@ -40,7 +40,7 @@ import LZTag
     override init(frame: CGRect) {
         super.init(frame: frame)
         collectionView.frame = self.bounds
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .gray
         collectionView.register(LZTagCollectionCell.self, forCellWithReuseIdentifier: LZTagCollectionCell.reuseID)
         collectionView.dataSource = self
     

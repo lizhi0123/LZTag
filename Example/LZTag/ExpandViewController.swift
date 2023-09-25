@@ -33,7 +33,7 @@ class ExpandViewController: UIViewController {
         self.view.backgroundColor = .white
         
         collectionView.register(LZTagRoundImageTitleCollectionCell.self, forCellWithReuseIdentifier: "ExpandCollectionCell")
-        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
+        collectionView.register(LZTagCollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
         collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
@@ -67,7 +67,7 @@ extension ExpandViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
-            headView.backgroundColor = .systemRed
+            headView.backgroundColor = .orange
             return headView
             
         case UICollectionView.elementKindSectionFooter:

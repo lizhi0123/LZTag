@@ -46,10 +46,10 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Expand'
     
   s.subspec 'Core' do |ss|
-      ss.source_files = 'LZTag/Core/*.swift'
+      ss.source_files = 'LZTag/Classes/Core/**/*'
     end
   s.subspec 'Expand' do |ss|
-      ss.source_files = 'LZTag/Expand/*.swift'
+      ss.source_files = 'LZTag/Classes/Expand/**/*'
       ss.dependency 'SnapKit', '~> 5.6.0'
       ss.dependency 'LZTag/Core'
     end

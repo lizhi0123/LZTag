@@ -32,7 +32,7 @@ class RoundViewController: UIViewController {
         self.view.backgroundColor = .white
         
         collectionView.register(LZTagRoundTitleCollectionCell.self, forCellWithReuseIdentifier: "LZTagRoundTitleCollectionCell")
-        collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
+        collectionView.register(LZTagCollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
         collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
         collectionView.backgroundColor = .yellow
@@ -59,6 +59,7 @@ extension RoundViewController: UICollectionViewDataSource {
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LZTagRoundTitleCollectionCell", for: indexPath) as! LZTagRoundTitleCollectionCell
        let title = self.titles[indexPath.row]
        cell.fill(title: title)
+       cell.fill(title: title)
        return cell
    }
     
@@ -66,12 +67,12 @@ extension RoundViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeadView", for: indexPath)
-            headView.backgroundColor = .systemRed
+            headView.backgroundColor = .orange
             return headView
         case UICollectionView.elementKindSectionFooter:
             
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "CollectionFootView", for: indexPath) as! CollectionFootView
-            footerView.backgroundColor = .systemOrange
+            footerView.backgroundColor = .orange
             return footerView
         default:
             return UICollectionReusableView()
