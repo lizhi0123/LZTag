@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LZTag'
-  s.version          = '1.0.3'
+  s.version          = '1.0.5'
   s.summary          = ' ios swift 标签选择器 tag Label selector,支持左对齐，右对齐，中间对齐。支持自定义样式cell'
 
 # This description is used to generate tags and improve search results.
@@ -46,10 +46,10 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Expand'
     
   s.subspec 'Core' do |ss|
-      ss.source_files = 'LZTag/Classes/Core/**/*'
+      ss.source_files = 'LZTag/Core/*.swift'
     end
   s.subspec 'Expand' do |ss|
-      ss.source_files = 'LZTag/Classes/Expand/**/*'
+      ss.source_files = 'LZTag/Expand/*.swift'
       ss.dependency 'SnapKit', '~> 5.6.0'
       ss.dependency 'LZTag/Core'
     end

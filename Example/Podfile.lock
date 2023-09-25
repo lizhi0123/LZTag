@@ -1,8 +1,8 @@
 PODS:
-  - LZTag (1.0.3):
-    - LZTag/Expand (= 1.0.3)
-  - LZTag/Core (1.0.3)
-  - LZTag/Expand (1.0.3):
+  - LZTag (1.0.5):
+    - LZTag/Expand (= 1.0.5)
+  - LZTag/Core (1.0.5)
+  - LZTag/Expand (1.0.5):
     - LZTag/Core
     - SnapKit (~> 5.6.0)
   - SnapKit (5.6.0)
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LZTag: 0baad8db4f6e96815c3277c76df81e3460f9ccc0
+  LZTag: 53705d230e68f64a3f6a488edc6837c6d81219f8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
 PODFILE CHECKSUM: f00845feae0f58aeecba9e485ebbc8ce6c8cbc6a
