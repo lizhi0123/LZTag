@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RoundCollectionCell: UICollectionViewCell {
+open class LZTagRoundTitleCollectionCell: UICollectionViewCell {
 
-    private lazy var label: UILabel = {
+    open lazy var label: UILabel = {
         let temp = UILabel()
         temp.textColor = .black
         temp.text = "label"
@@ -37,11 +37,11 @@ class RoundCollectionCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fill(title:String)  {
+  open  func fill(title:String)  {
         self.label.text = title
     }
 }

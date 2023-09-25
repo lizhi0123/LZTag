@@ -12,7 +12,7 @@ class ExpandViewController: UIViewController {
 
     lazy var layout: LZTagLayout = {
        let temp = LZTagLayout()
-        temp.itemHeight = 40
+        temp.itemHeight = 24
        temp.delegate = self
        return temp
    }()
@@ -32,7 +32,7 @@ class ExpandViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        collectionView.register(ExpandCollectionCell.self, forCellWithReuseIdentifier: "ExpandCollectionCell")
+        collectionView.register(LZTagRoundImageTitleCollectionCell.self, forCellWithReuseIdentifier: "ExpandCollectionCell")
         collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
         collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
@@ -57,7 +57,7 @@ extension ExpandViewController: UICollectionViewDataSource {
        return self.titles.count
    }
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpandCollectionCell", for: indexPath) as! ExpandCollectionCell
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpandCollectionCell", for: indexPath) as! LZTagRoundImageTitleCollectionCell
        let title = self.titles[indexPath.row]
        cell.fill(title: title)
        return cell

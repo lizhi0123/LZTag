@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ExpandCollectionCell: UICollectionViewCell {
-    private lazy var roundView: UIView = {
+open class LZTagRoundImageTitleCollectionCell: UICollectionViewCell {
+    open lazy var roundView: UIView = {
         let temp = UIView()
         temp.layer.masksToBounds = true
         temp.layer.cornerRadius = 12
@@ -21,14 +21,14 @@ class ExpandCollectionCell: UICollectionViewCell {
         return temp
     }()
 
-    private lazy var zanImgView: UIImageView = {
+    open lazy var zanImgView: UIImageView = {
         let temp = UIImageView()
         temp.image = UIImage(named: "zan")
         temp.contentMode = .scaleToFill
         return temp
     }()
 
-    private lazy var label: UILabel = {
+    open lazy var label: UILabel = {
         let temp = UILabel()
         temp.textColor = .black
         temp.text = "label"
@@ -61,11 +61,11 @@ class ExpandCollectionCell: UICollectionViewCell {
     }
     
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fill(title: String) {
+    open func fill(title: String) {
         label.text = title
     }
 }

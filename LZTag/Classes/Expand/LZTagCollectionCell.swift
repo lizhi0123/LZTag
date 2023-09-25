@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class LZTagCollectionCell: UICollectionViewCell {
+open class LZTagCollectionCell: UICollectionViewCell {
     public static var reuseID: String {
       return NSStringFromClass(classForCoder())
     }
-    private lazy var label: UILabel = {
+    open public(set) lazy var label: UILabel = {
         let temp = UILabel()
         temp.textColor = .darkGray
         temp.text = "wo"
@@ -31,11 +31,11 @@ class LZTagCollectionCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fill(title:String)  {
+   open func fill(title:String)  {
         self.label.text = title
         
     }

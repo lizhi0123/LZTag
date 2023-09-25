@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0422D77527D06BA700640AF2 /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77427D06BA700640AF2 /* ExpandViewController.swift */; };
-		0422D77727D06C2200640AF2 /* ExpandCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */; };
 		0422D77927D06FDC00640AF2 /* CollectionFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422D77827D06FDC00640AF2 /* CollectionFootView.swift */; };
-		04DDCBED27CF493000B33547 /* LZTagCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBEB27CF492F00B33547 /* LZTagCollectionCell.swift */; };
 		04DDCBEE27CF493000B33547 /* LZTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBEC27CF493000B33547 /* LZTagView.swift */; };
 		04DDCBF127CF732500B33547 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBF027CF732500B33547 /* BasicViewController.swift */; };
 		04DDCBF427CF74A300B33547 /* RoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBF327CF74A300B33547 /* RoundViewController.swift */; };
 		04DDCBF627CF79C500B33547 /* CollectionHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBF527CF79C500B33547 /* CollectionHeadView.swift */; };
-		04DDCBF827CF7B2000B33547 /* RoundCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDCBF727CF7B2000B33547 /* RoundCollectionCell.swift */; };
 		3ECB533F7A0B01047A6EEC0B /* Pods_LZTag_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F088E70772AAB719AD1BAA8 /* Pods_LZTag_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -38,14 +35,11 @@
 
 /* Begin PBXFileReference section */
 		0422D77427D06BA700640AF2 /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
-		0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollectionCell.swift; sourceTree = "<group>"; };
 		0422D77827D06FDC00640AF2 /* CollectionFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionFootView.swift; sourceTree = "<group>"; };
-		04DDCBEB27CF492F00B33547 /* LZTagCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZTagCollectionCell.swift; sourceTree = "<group>"; };
 		04DDCBEC27CF493000B33547 /* LZTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LZTagView.swift; sourceTree = "<group>"; };
 		04DDCBF027CF732500B33547 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		04DDCBF327CF74A300B33547 /* RoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViewController.swift; sourceTree = "<group>"; };
 		04DDCBF527CF79C500B33547 /* CollectionHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeadView.swift; sourceTree = "<group>"; };
-		04DDCBF727CF7B2000B33547 /* RoundCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCollectionCell.swift; sourceTree = "<group>"; };
 		2E27E10457E87C69E226142B /* Pods-LZTag_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZTag_Tests.debug.xcconfig"; path = "Target Support Files/Pods-LZTag_Tests/Pods-LZTag_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F088E70772AAB719AD1BAA8 /* Pods_LZTag_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZTag_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB4EC177898324114C5921D /* Pods_LZTag_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LZTag_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				0422D77427D06BA700640AF2 /* ExpandViewController.swift */,
-				0422D77627D06C2200640AF2 /* ExpandCollectionCell.swift */,
 			);
 			name = Expand;
 			sourceTree = "<group>";
@@ -107,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				04DDCBF027CF732500B33547 /* BasicViewController.swift */,
-				04DDCBEB27CF492F00B33547 /* LZTagCollectionCell.swift */,
 				04DDCBEC27CF493000B33547 /* LZTagView.swift */,
 			);
 			name = Basic;
@@ -117,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				04DDCBF327CF74A300B33547 /* RoundViewController.swift */,
-				04DDCBF727CF7B2000B33547 /* RoundCollectionCell.swift */,
 			);
 			name = Round;
 			sourceTree = "<group>";
@@ -276,6 +267,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5GAWG88GR9;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -393,15 +385,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DDCBF827CF7B2000B33547 /* RoundCollectionCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				0422D77927D06FDC00640AF2 /* CollectionFootView.swift in Sources */,
 				04DDCBF127CF732500B33547 /* BasicViewController.swift in Sources */,
 				04DDCBF627CF79C500B33547 /* CollectionHeadView.swift in Sources */,
-				04DDCBED27CF493000B33547 /* LZTagCollectionCell.swift in Sources */,
 				0422D77527D06BA700640AF2 /* ExpandViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				0422D77727D06C2200640AF2 /* ExpandCollectionCell.swift in Sources */,
 				04DDCBEE27CF493000B33547 /* LZTagView.swift in Sources */,
 				04DDCBF427CF74A300B33547 /* RoundViewController.swift in Sources */,
 			);
@@ -584,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E27E10457E87C69E226142B /* Pods-LZTag_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5GAWG88GR9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -606,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C692180BED770D2198E07AB8 /* Pods-LZTag_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5GAWG88GR9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

@@ -31,7 +31,7 @@ class RoundViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        collectionView.register(RoundCollectionCell.self, forCellWithReuseIdentifier: "RoundCollectionCell")
+        collectionView.register(LZTagRoundTitleCollectionCell.self, forCellWithReuseIdentifier: "LZTagRoundTitleCollectionCell")
         collectionView.register(CollectionHeadView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader , withReuseIdentifier: "CollectionHeadView")
         collectionView.register(CollectionFootView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter , withReuseIdentifier: "CollectionFootView")
         collectionView.dataSource = self
@@ -56,7 +56,7 @@ extension RoundViewController: UICollectionViewDataSource {
        return self.titles.count
    }
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoundCollectionCell", for: indexPath) as! RoundCollectionCell
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LZTagRoundTitleCollectionCell", for: indexPath) as! LZTagRoundTitleCollectionCell
        let title = self.titles[indexPath.row]
        cell.fill(title: title)
        return cell
