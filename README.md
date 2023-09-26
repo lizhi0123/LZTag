@@ -146,5 +146,9 @@ extension RoundViewController: LZTagLayoutDelegate {
 
 ```
 
+- ##### 版本记录
+
+  1.0.8   secionInset 添加
+
 
 参考 https://www.jianshu.com/p/47f320732e87
