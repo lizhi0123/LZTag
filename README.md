@@ -26,13 +26,18 @@ v1.0.0 支持 swift 4.2
 
 
  - #### 引用
-更新pod
+更新pod命令
 ```
 pod repo update
 ```
+podfile 文件里添加
 
 ```
 pod 'LZTag'
+```
+命令安装
+```
+pod install
 ```
 - #### LZTagLayout 方法属性说明
 |  方法/属性   | 说明  |
