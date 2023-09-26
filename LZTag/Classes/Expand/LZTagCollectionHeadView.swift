@@ -9,17 +9,23 @@
 import UIKit
 
 open class LZTagCollectionHeadView: UICollectionReusableView {
-   open var label = UILabel()
-    override init(frame: CGRect) {
+    open var label = UILabel()
+
+    override public init(frame: CGRect) {
         super.init(frame: frame)
+        addViews()
+    }
+
+    @available(*, unavailable)
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    open func addViews() {
         label.text = "head"
-        self.addSubview(label)
+        addSubview(label)
         label.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

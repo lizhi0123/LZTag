@@ -38,10 +38,13 @@ open class LZTagRoundImageTitleCollectionCell: UICollectionViewCell {
         return temp
     }()
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
+        addViews()
+    }
+    
+    open func addViews() {
         label.frame = bounds
-        
         
         addSubview(roundView)
         roundView.addSubview(zanImgView)
@@ -61,7 +64,7 @@ open class LZTagRoundImageTitleCollectionCell: UICollectionViewCell {
     }
     
     @available(*, unavailable)
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
