@@ -75,11 +75,7 @@ open class LZTagLayout: UICollectionViewLayout {
             var indexPathsInRow = [IndexPath]()
             
             /// 是否是 第一行的第一个item
-            var isFirstItemInSection = true{
-                didSet {
-                    print("---- isFirstItemINarow = ",isFirstItemInSection)
-                }
-            }
+            var isFirstItemInSection = true
             
             for item in 0 ..< rows {
                 let indexPath = IndexPath(item: item, section: section)
