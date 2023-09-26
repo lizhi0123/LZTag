@@ -13,11 +13,16 @@ class RoundViewController: UIViewController {
 
     lazy var layout: LZTagLayout = {
        let temp = LZTagLayout()
+        temp.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
        temp.delegate = self
        return temp
    }()
    
     var titles = ["round现在左对齐","可设右对齐","可设居中对齐","cell 内可以自定义1","内边距可自定义2",
+                  "cell 内可以自定义3","内边距可自定义4",
+                  "标签1","标签选择器","标签1","标签选择器","round现在左对齐","可设右对齐","可设居中对齐","cell 内可以自定义1","内边距可自定义2",
+                  "cell 内可以自定义3","内边距可自定义4",
+                  "标签1","标签选择器","标签1","标签选择器","round现在左对齐","可设右对齐","可设居中对齐","cell 内可以自定义1","内边距可自定义2",
                   "cell 内可以自定义3","内边距可自定义4",
                   "标签1","标签选择器","标签1","标签选择器"]
 
@@ -40,7 +45,7 @@ class RoundViewController: UIViewController {
         self.view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+            $0.edges.equalToSuperview()
         }
 
     }

@@ -35,6 +35,9 @@ open class LZTagLayout: UICollectionViewLayout {
     open var itemHeight: CGFloat = 25
     // 标签的字体
     open var itemFont = UIFont.systemFont(ofSize: 12)
+    
+    // 缩放边距，现在只支持 左 和 右
+    open var sectionInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)//.zero
 
     open weak var delegate: LZTagLayoutDelegate?
 //    var titles = [String]()
@@ -66,9 +69,18 @@ open class LZTagLayout: UICollectionViewLayout {
             contentHeight += sectionHeadSize.height
             // 处理tag
             let rows = collectionView.numberOfItems(inSection: section)
-            var frame = CGRect(x: 0, y: contentHeight + lineSpacing, width: 0, height: 0)
+            var frame = CGRect(x: self.sectionInset.left, y: contentHeight + lineSpacing, width: 0, height: 0)
+            /// 一行 已内容的宽度
             var contentWidthInRow = CGFloat(0)
             var indexPathsInRow = [IndexPath]()
+            
+            /// 是否是 第一行的第一个item
+            var isFirstItemInSection = true{
+                didSet {
+                    print("---- isFirstItemINarow = ",isFirstItemInSection)
+                }
+            }
+            
             for item in 0 ..< rows {
                 let indexPath = IndexPath(item: item, section: section)
                 let text = delegate.tagLayout(self, collectionView: collectionView, textForItemAt: indexPath)
@@ -79,27 +91,34 @@ open class LZTagLayout: UICollectionViewLayout {
                 case .left:
                     break
                 case .right:
-                    if frame.maxX + tagWidth + itemSpacing * 2 > self.collectionView!.frame.width {
+                    if frame.maxX  + itemSpacing + tagWidth > self.collectionView!.frame.width -  self.sectionInset.right {
                         // 需要换行
                         resetRightAlignmentRowFrame(contentWidthInRow: contentWidthInRow, indexPathsInRow: indexPathsInRow)
                     }
 
                 case .center:
-                    if frame.maxX + tagWidth + itemSpacing * 2 > self.collectionView!.frame.width {
+                    if frame.maxX  + itemSpacing  + tagWidth    > self.collectionView!.frame.width - self.sectionInset.right {
                         // 需要换行
                         resetCenterAlignmentRowFrame(contentWidthInRow: contentWidthInRow, indexPathsInRow: indexPathsInRow)
                     }
                 }
                 // 正常靠左显示
-                if frame.maxX + tagWidth + itemSpacing * 2 > self.collectionView!.frame.width {
+                if frame.maxX  + itemSpacing  + tagWidth > (self.collectionView!.frame.width - self.sectionInset.right) {
                     indexPathsInRow.removeAll()
                     contentWidthInRow = 0
                     // 需要换行
-                    frame = CGRect(x: itemSpacing, y: frame.maxY + lineSpacing, width: tagWidth, height: itemHeight)
-                    contentWidthInRow = itemSpacing + tagWidth
-                } else {
-                    frame = CGRect(x: frame.maxX + itemSpacing, y: frame.origin.y, width: tagWidth, height: itemHeight)
-                    contentWidthInRow = contentWidthInRow + itemSpacing + tagWidth
+                    frame = CGRect(x: self.sectionInset.left, y: frame.maxY + lineSpacing, width: tagWidth, height: itemHeight)
+                    contentWidthInRow =  self.sectionInset.left + tagWidth
+                } else {//不换行
+                    var newFrameX:CGFloat
+                    if (isFirstItemInSection){
+                        newFrameX = frame.maxX
+                    }else {
+                        newFrameX = frame.maxX + itemSpacing
+                    }
+                    frame = CGRect(x: newFrameX, y: frame.origin.y, width: tagWidth, height: itemHeight)
+                    contentWidthInRow = isFirstItemInSection ? tagWidth : contentWidthInRow + itemSpacing + tagWidth
+                    isFirstItemInSection = false
                 }
                 indexPathsInRow.append(indexPath)
 
@@ -136,8 +155,14 @@ open class LZTagLayout: UICollectionViewLayout {
             contentHeight = contentHeight + sectionFooterSize.height
         }
 
+        
+        /// <#Description#>
+        /// - Parameters:
+        ///   - contentWidthInRow: 一行已有内容的宽度
+        ///   - indexPathsInRow: <#indexPathsInRow description#>
         func resetCenterAlignmentRowFrame(contentWidthInRow: CGFloat, indexPathsInRow: [IndexPath]) {
-            let offset = ((self.collectionView?.frame.size.width ?? 0) - contentWidthInRow - itemSpacing) / 2
+            //移动距离
+            let offset = ((self.collectionView?.frame.size.width ?? 0) - self.sectionInset.left - self.sectionInset.right - contentWidthInRow - itemSpacing ) / 2
             for indexPath in indexPathsInRow {
                 let attribute = visibleLayoutAttributes.first { $0.indexPath == indexPath }
                 if let centerOld = attribute?.center {
@@ -146,8 +171,14 @@ open class LZTagLayout: UICollectionViewLayout {
             }
         }
 
+        
+        /// <#Description#>
+        /// - Parameters:
+        ///   - contentWidthInRow: 一行已有内容的宽度
+        ///   - indexPathsInRow: <#indexPathsInRow description#>
         func resetRightAlignmentRowFrame(contentWidthInRow: CGFloat, indexPathsInRow: [IndexPath]) {
-            let offset = ((self.collectionView?.frame.size.width ?? 0) - contentWidthInRow - itemSpacing)
+            //移动距离
+            let offset = ((self.collectionView?.frame.size.width ?? 0) - self.sectionInset.left - self.sectionInset.right - contentWidthInRow - itemSpacing )
             for indexPath in indexPathsInRow {
                 let attribute = visibleLayoutAttributes.first { $0.indexPath == indexPath }
                 if let centerOld = attribute?.center {
@@ -182,4 +213,5 @@ open class LZTagLayout: UICollectionViewLayout {
         return rect.width
     }
 }
+
 

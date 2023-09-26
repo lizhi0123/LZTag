@@ -24,8 +24,12 @@ open class LZTagCollectionHeadView: UICollectionReusableView {
     open func addViews() {
         label.text = "head"
         addSubview(label)
-        label.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
+       
     }
 }
